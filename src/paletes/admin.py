@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Palete, Color
+
+admin.site.register(Palete)
+admin.site.register(Color)
