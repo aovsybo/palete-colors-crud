@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    volumes:
+      - static:/app/static
+      - media:/app/media
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - pgrs_db
+  pgrs_db:
+    image: postgres:15
+    env_file:
+      - .env
+    volumes:
+      - pgdb:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgdb: null
+  media:
+  static:
